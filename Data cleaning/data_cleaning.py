@@ -112,8 +112,6 @@ for i in range(len(fdf)):
                     n+=int(T[i,j+1])
                 
         else:
-            print(j)
-
             
             if (type(T[i,j])==float and type(T[i,j+1])==int):
                 
@@ -148,14 +146,7 @@ for i in range(len(fdf)):
 tab_f=np.matrix(tab_f,float)
 M=np.matrix(final[:,2:6],float)
 tab_f[:,12:16]=M
-############################Depend de Data######################
-#tab_f=np.delete(tab_f, 71, axis=0)
-#df_zscore=np.zeros((np.shape(tab_f)))
-#for i in range(0,np.shape(tab_f)[1]):
-#    df_zscore[:,i] = ((tab_f[:,i] - tab_f[:,i].mean())/tab_f[:,i].std()).reshape(262)
-#A=(np.abs(df_zscore)>10)
-#y=np.where(A[:,:]==True)
-#tab_f = np.delete(tab_f, y[0], axis=0)
+
 ########################## Outlier ##############################
 def find_outliers(df):
     df_zscore = (df - df.mean())/df.std()
@@ -168,10 +159,7 @@ tab_f = np.delete(tab_f, z[0], axis=0)
 
 ##################################################
 df =pd.DataFrame(tab_f, columns = ["wire1","wire2","wire3","wire4","wire5","wire6","wire7","wire8","wire9","wire10","wire11","wire12",'Energy (J)','Pressure (bar)','Amplitude (%)','Width (mm)'])
-##df.drop_duplicates(["wire1","wire2","wire3","wire4","wire5","wire6","wire7","wire8","wire9","wire10","wire11","wire12","wire13","wire14","wire15"],keep='last', inplace=True)
 df.drop_duplicates(['Energy (J)','Pressure (bar)','Amplitude (%)','Width (mm)'],keep='first', inplace=True)
-##==========For our Data=============
-##df.drop(df.index[[73]], inplace=True)
 
 df.to_csv('clean_data_test3.csv')
 
