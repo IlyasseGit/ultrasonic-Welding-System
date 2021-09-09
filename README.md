@@ -5,12 +5,7 @@ Used (supervised learning) Methods:
 
 - multiple linear regression
   
-- logistic regression
-  
 - neural network
   
-- SVM and SVR (support vector machine)
+-  SVR - kernel methods
   
-- kernel methods
-  
-- random forest
